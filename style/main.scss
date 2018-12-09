@@ -1,0 +1,839 @@
+/* Mixin */
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+@mixin flexColumn {
+    flex-direction: column;
+}
+
+@mixin margin {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+/* Variables */
+$fontFamily: 'Lato', sans-serif;
+$white: #ffffff;
+$black: #000000;
+$main: #1f6da0;
+$transistion: all .4s 0s linear;
+$transition: all .4s 0s ease;
+
+
+/* Root */
+:root {
+    font-size: 10px;
+}
+
+
+/* All elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Links */
+a {
+    text-decoration: none;
+    color: $black;
+    text-align: center;
+    display: block;
+}
+
+
+/* Main color */
+.mainColor {
+    color: $main;
+    display: inherit;
+}
+
+/* H1, H2, H3, H4, H5, H6 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+
+/* H1 */
+h1 {
+    font-size: 8rem;
+    line-height: 11rem;
+}
+
+
+/* H2 */
+h2 {
+    font-size: 2.8rem;
+}
+
+
+/* H3 */
+h3 {
+    font-size: 2rem;
+}
+
+
+/* Strong */
+strong {
+    font-weight: 300;
+}
+
+
+/* Em */
+em {
+    font-style: normal;
+}
+
+/* Hamburger */
+.navButton {
+    background: transparent;
+    font-size: 3rem;
+    position: fixed;
+    top: 2.5rem;
+    left: 2.5rem;
+    color: $main;
+    display: none;
+    z-index: 999999999999999999999999;
+}
+
+/* Span */
+span {
+    display: block;
+}
+
+
+/* HTML and BODY */
+html, body {
+    font-family: $fontFamily;
+    background: $white;
+    color: $black;
+    overflow-x: hidden !important;
+}
+
+
+/* Container Page */
+.containerPage {
+    width: 100%;
+    max-height: 100%;
+    font-size: 1.6rem;
+    font-weight: 300;
+    overflow: hidden !important;
+
+    &.home {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+
+/* Header */
+.header {
+    min-height: 100vh;
+    /*background: url(../img/section.jpg) center/cover;*/
+
+    &.home {
+        color: $white;
+        background: url(../img/header.jpg) center/cover no-repeat;
+        /*animation: image 50s ease infinite alternate;*/
+        height: 100%;
+    }
+
+    .nav {
+        width: 100%;
+        background: transparent;
+        z-index: 9999;
+
+        .menu {
+            list-style: none;
+            @include flex;
+
+                li {
+
+                    a {
+                        padding: 3rem 1.5rem;
+                        color: $black;
+                        font-weight: 400;
+                        transition: $transistion;
+
+                        &:hover {
+                            color: $main;
+                        }
+                    }
+
+                    .space {
+                        width: 40rem !important;
+                    }
+
+                    .logo {
+                        font-size: 5rem;
+                        font-weight: 900;
+                        margin-top: .8rem;
+                        padding: 0;
+                    }
+            }
+
+            &.home {
+
+                li {
+                    a {
+                        padding: 3rem 1.5rem;
+                        color: $white;
+                        transition: $transistion;
+                        background: transparent;
+
+                        &:hover {
+                            color: $main;
+                        }
+                    }
+
+                    .logo {
+                        font-size: 5rem;
+                        font-weight: 900;
+                        margin-top: .8rem;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .headerContent {
+        text-align: center;
+        padding: 13rem 2rem;
+
+        .headerButton {
+            margin-top: 5rem;
+            margin-bottom: 0;
+            color: $white;
+            padding: 2rem;
+            border: 2px solid $white;
+            background: transparent;
+            width: 25rem;
+            @include margin;
+            transition: $transistion;
+            border-radius: .5rem;
+
+            &:hover {
+                background: $main;
+                border-color: $main;
+            }
+        }
+
+    }
+
+}
+
+
+/* Footer */
+.footer {
+    padding: 2rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 300;
+
+    &.home {
+        color: $white;
+        margin-top: 0;
+        padding: 1rem !important;
+        margin-top: 6rem;
+    }
+}
+
+
+/* Offer */
+.offer {
+
+    .offerGroup {
+        min-height: 100vh;
+        @include flex;
+        padding: 0 4rem;
+
+        &:first-child {
+            margin: 10rem 0 !important;
+        }
+
+        .offerItem {
+            text-align: center;
+            flex: 1;
+
+            .offerIcon {
+                font-size: 30rem;
+                color: $main;
+            }
+
+            .offerText {
+                transform: translateY(50%);
+
+                h2 {
+                    line-height: 6rem;
+                    font-size: 3.8rem;
+                }
+
+                p {
+                    font-size: 1.8rem;
+                    font-weight: 300;
+                }
+
+            }
+        }
+    }
+}
+
+/* Portfolio */
+.portfolio {
+    @include flex;
+
+    .portfolioItem {
+        width: 35rem;
+        height: 35rem;
+        position: relative;
+        overflow: hidden !important;
+        margin: .8rem;
+
+        .portfolioItemImg {
+            height: 100%;
+            width: auto;
+            transition: $transition;
+        }
+
+        &#portfolioItem1 {
+            .portfolioItemImg {
+                transform: scale(2) translateX(30%);
+            }
+        }
+
+        .portfolioItemOver {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            text-align: center;
+            transition: $transition;
+            width: 100%;
+            height: 100%;
+            overflow: hidden !important;
+            background: $main;
+            transform: scale(0);
+            opacity: .85;
+
+            .text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: $white;
+                opacity: 1;
+                width: 100%;
+
+                h3 {
+                    font-size: 4rem;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        &:hover .portfolioItemOver {
+            transform: scale(1) ;
+        }
+
+        &:hover .portfolioItemImg {
+            transform: scale(4) rotate(-20deg) !important;
+        }
+    }
+
+}
+
+
+
+/* About Me */
+.aboutmesection {
+
+    .aboutme {
+        @include flex;
+
+        .aboutmeItem {
+            width: 50%;
+            min-height: 100vh;
+
+            .image {
+                height: 100%;
+                background: url(../img/jankapela.jpg) center/cover;
+            }
+
+            .text {
+                padding: 5rem;
+                background: #D4D9DD;
+                height: 100%;
+
+                h2 {
+                    font-size: 5rem;
+                    color: $main;
+                    line-height: 6rem;
+                }
+
+                h3 {
+                    line-height: 3rem;
+                    margin-bottom: 1rem;
+                    color: $main;
+                }
+
+                p {
+                    line-height: 2.8rem;
+                    font-size: 1.8rem;
+                }
+            }
+        }
+
+    }
+
+}
+
+/* Contact block */
+.contactBlock {
+    @include flex;
+    @include margin;
+    padding: 11rem 8rem 8rem;
+    text-align: center;
+
+    h2 {
+        margin-right: 8rem;
+        line-height: 5rem;
+        margin-bottom: 2rem;
+    }
+
+    .button {
+        border: 2.5px solid $main;
+        padding: 1.5rem;
+        line-height: 3rem;
+        transition: $transistion;
+
+        &:hover {
+            background: $main;
+            color: $white;
+        }
+    }
+
+}
+
+/* Contact */
+.contact {
+    h1 {
+        margin-top: 5rem;
+    }
+}
+
+/* RWD */
+@media (max-width: 1045px) {
+    .page {
+        h1 {
+            font-size: 7rem !important;
+        }
+
+        h2 {
+            font-size: 2.3rem !important;
+        }
+    }
+}
+
+@media (max-width: 919px) {
+    .headerContent {
+        h1 {
+            font-size: 7rem !important;
+        }
+    }
+}
+
+@media (max-width: 916px) {
+    .page {
+        h1 {
+            font-size: 5.9rem !important;
+            line-height: 6rem !important;
+            margin-bottom: 2rem !important;
+        }
+
+        h2 {
+            font-size: 2rem !important;
+        }
+    }
+}
+
+@media (max-width: 890px) {
+    .offer {
+            .offerGroup {
+                @include flexColumn;
+                margin-top: 10rem !important;
+
+                .offerItem {
+                text-align: center;
+                flex: 1;
+
+                .offerIcon {
+                    font-size: 15rem;
+                    color: $main;
+                }
+
+                .offerText {
+                    transform: translateY(-2.8rem) !important;
+
+                    h2 {
+                        line-height: 5rem;
+                        font-size: 2.5rem !important;
+                        margin-bottom: 1.5rem !important;
+                    }
+
+                    p {
+                        font-size: 1.8rem;
+                        font-weight: 300;
+                    }
+
+                }
+            }
+
+        }
+
+        .ikona {
+                    flex-flow: column-reverse;
+                }
+    }
+}
+
+@media (max-width: 816px) {
+    .aboutme {
+        @include flexColumn;
+
+        .aboutmeItem {
+            width: 100% !important;
+        }
+    }
+
+    /* Contact block */
+    .contactBlock {
+        @include flex;
+        padding: 11rem 1rem 8rem !important;
+        text-align: center;
+
+        h2 {
+            width: 100% !important;
+            line-height: 5rem;
+            font-size: 2rem;
+            margin-right: 0% !important;
+        }
+
+    }
+}
+
+@media (max-width: 880px) {
+    .contactPage {
+        h2 {
+            font-size: 2rem !important;
+        }
+    }
+
+    .navButton {
+        display: block;
+        z-index: 9999999;
+    }
+
+    .nav {
+        width: 100%;
+        background: $black !important;
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        .menu {
+            flex-direction: column !important;
+            text-align: center !important;
+
+            a {
+                padding: 1rem !important;
+                color: $white !important;
+                font-weight: 400;
+                transition: $transistion;
+                width: 8rem;
+                @include margin;
+                text-align: center !important;
+
+                &:hover {
+                    color: $main;
+                }
+            }
+
+            .space {
+                width: 0rem !important;
+            }
+
+            &.home {
+
+                a {
+                    padding: 3rem 1.5rem;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .headerContent {
+        h1 {
+            font-size: 5.8rem !important;
+        }
+    }
+}
+
+@media (max-width: 798px) {
+    .headerContent {
+        h1 {
+            font-size: 5.7rem !important;
+        }
+    }
+}
+
+@media (max-width: 755px) {
+    .page {
+        h1 {
+            font-size: 5.6rem !important;
+        }
+
+        h2 {
+            font-size: 2rem !important;
+        }
+    }
+}
+
+@media (max-width: 740px) {
+    .page {
+        h1 {
+            font-size: 5.4rem !important;
+        }
+
+        h2 {
+            font-size: 1.9rem !important;
+        }
+    }
+}
+
+@media (max-width: 716px) {
+    .page {
+        h1 {
+            font-size: 5.3rem !important;
+        }
+
+        h2 {
+            font-size: 1.9rem !important;
+        }
+    }
+}
+
+@media (max-width: 705px) {
+    .page {
+        h1 {
+            font-size: 5.2rem !important;
+        }
+
+        h2 {
+            font-size: 1.8rem !important;
+        }
+    }
+}
+
+@media (max-width: 690px) {
+    .headerContent {
+        h1 {
+            font-size: 5rem !important;
+        }
+    }
+}
+
+@media (max-width: 666px) {
+    .page {
+        h1 {
+            font-size: 4.8rem !important;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .page {
+        h1 {
+            font-size: 4.6rem !important;
+        }
+    }
+}
+
+@media (max-width: 616px) {
+    .page {
+        h1 {
+            font-size: 4.4rem !important;
+        }
+    }
+}
+
+@media (max-width: 590px) {
+    .page {
+        h1 {
+            font-size: 4rem !important;
+        }
+
+        h2 {
+            font-size: 1.7rem !important;
+        }
+    }
+}
+
+@media (max-width: 586px) {
+    .headerContent {
+        h1 {
+            font-size: 4.5rem !important;
+        }
+
+        .headerButton {
+            font-size: 1.3rem;
+            padding: 1.5rem !important;
+            width: 18rem !important;
+        }
+    }
+}
+
+@media (max-width: 584px) {
+    .page {
+        h1 {
+            font-size: 4rem !important;
+        }
+
+        h2 {
+            font-size: 1.7rem !important;
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    .page {
+        h1 {
+            font-size: 3.7rem !important;
+        }
+    }
+}
+
+@media (max-width: 532px) {
+    .headerContent {
+        h1 {
+            font-size: 4rem !important;
+        }
+
+        .headerButton {
+            font-size: 1.3rem;
+            padding: 1.5rem !important;
+            width: 18rem !important;
+        }
+    }
+}
+
+@media (max-width: 530px) {
+    .page {
+        h1 {
+            font-size: 3.6rem !important;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .page {
+        h1 {
+            font-size: 3.2rem !important;
+        }
+
+         h2 {
+            margin-top: 2rem;
+        }
+    }
+}
+
+@media (max-width: 478px) {
+    .headerContent {
+        h1 {
+            font-size: 3.5rem !important;
+        }
+
+        .headerButton {
+            font-size: 1.3rem;
+            padding: 1.5rem !important;
+            width: 18rem !important;
+        }
+    }
+
+    .page {
+        h1 {
+            font-size: 3rem !important;
+            line-height: 4rem !important;
+        }
+
+        h2 {
+            font-size: 1.6rem !important;
+        }
+    }
+}
+
+@media (max-width: 424px) {
+    .headerContent {
+        h1 {
+            font-size: 3rem !important;
+        }
+
+        .footer {
+            font-size: 1.5rem !important;
+        }
+    }
+}
+
+@media (max-width: 372px) {
+    .headerContent {
+        h1 {
+            font-size: 3rem !important;
+            line-height: 4.5rem;
+        }
+
+        .footer {
+            font-size: 1.3rem !important;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .headerContent {
+        h1 {
+            font-size: 3rem !important;
+            line-height: 4.5rem;
+        }
+
+        .footer {
+            font-size: 1.1rem !important;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .page {
+        h1 {
+            font-size: 2rem !important;
+        }
+
+        h2 {
+            font-size: 1.5rem !important;
+        }
+    }
+}
+
+
+/*Keyframes*/
+/*@keyframes image {
+    0% {background-size: 100% 100%;}
+    100% {background-size: 180% 180%;}
+}*/

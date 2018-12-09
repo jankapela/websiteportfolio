@@ -1,0 +1,12 @@
+### PROTECT FILES ###
+<FilesMatch "\.(htaccess|htpasswd|ini|fla|psd|log|sh)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+RewriteEngine on
+RewriteRule strony-internetowe-brzeg index.html
+RewriteRule o-mnie aboutme.html
+RewriteRule tworzenie-stron-internetowych offer.html
+RewriteRule realizacje portfolio.html
+RewriteRule kontakt-współpraca contact.html
